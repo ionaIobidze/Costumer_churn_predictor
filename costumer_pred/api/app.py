@@ -1,16 +1,18 @@
 from flask import Flask, request, jsonify
 import joblib
-import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
-model = joblib.load('models/churn_model.pkl')
+
+# Load the trained model
+model = joblib.load('model.pkl')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
-    df = pd.DataFrame(data)
-    prediction = model.predict(df)
-    return jsonify({'prediction': prediction.tolist()})
+    data = request.json  # Get JSON data from request
+    features = np.array(data['features']).reshape(1, -1)  # Convert to NumPy array and reshape for prediction
+    prediction = model.predict(features)[0]  # Make prediction
+    return jsonify({'prediction': int(prediction)})
 
 if __name__ == '__main__':
     app.run(debug=True)

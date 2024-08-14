@@ -1,26 +1,20 @@
-# Python environment files and directories
+# Ignore Python environment files
 costumer_pred/bin/
+costumer_pred/include/
 costumer_pred/lib/
 costumer_pred/lib64/
-costumer_pred/include/
+costumer_pred/pyvenv.cfg
 costumer_pred/src/__pycache__/
-costumer_pred/src/*.pyc
-costumer_pred/src/*.pyo
 
-# C# build files and directories
+# Ignore model files
+costumer_pred/api/model.pkl
+
+# Ignore compiled files
 ChurnPredictionApp/bin/
 ChurnPredictionApp/obj/
 
-# Ignore log files
-*.log
-
-# Ignore user-specific IDE/editor settings
+# Ignore VS Code settings
 .vscode/
-.idea/
 
-# OS-specific files
-.DS_Store
-Thumbs.db
-
-# Environment variable files
-.env
+# Ignore temporary files
+*.log
